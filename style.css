@@ -86,51 +86,6 @@ body{
     top: -95px;
 }
 
-
-.sparkles{
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.sparkles span{
-    position: absolute;
-    bottom: -40px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 120, 120, 0.75) 45%, rgba(255, 0, 0, 0) 80%);
-    box-shadow: 0 0 16px rgba(255, 60, 60, 0.55);
-    opacity: 0;
-    transform: translateY(10px) scale(.35);
-    transition: opacity .3s ease;
-}
-
-.sparkles span:nth-child(1){ left: 4vw; animation-delay: 0s; width: 14px; height: 14px; }
-.sparkles span:nth-child(2){ left: 12vw; animation-delay: .35s; width: 20px; height: 20px; }
-.sparkles span:nth-child(3){ left: 20vw; animation-delay: .15s; width: 12px; height: 12px; }
-.sparkles span:nth-child(4){ left: 28vw; animation-delay: .5s; width: 18px; height: 18px; }
-.sparkles span:nth-child(5){ left: 36vw; animation-delay: .25s; width: 16px; height: 16px; }
-.sparkles span:nth-child(6){ left: 44vw; animation-delay: .65s; width: 22px; height: 22px; }
-.sparkles span:nth-child(7){ left: 52vw; animation-delay: .1s; width: 14px; height: 14px; }
-.sparkles span:nth-child(8){ left: 60vw; animation-delay: .45s; width: 20px; height: 20px; }
-.sparkles span:nth-child(9){ left: 68vw; animation-delay: .2s; width: 12px; height: 12px; }
-.sparkles span:nth-child(10){ left: 76vw; animation-delay: .55s; width: 18px; height: 18px; }
-.sparkles span:nth-child(11){ left: 84vw; animation-delay: .3s; width: 16px; height: 16px; }
-.sparkles span:nth-child(12){ left: 92vw; animation-delay: .7s; width: 22px; height: 22px; }
-
-.container:hover .sparkles span{
-    opacity: .8;
-    animation: sparkle-rise 3.4s ease-out infinite;
-}
-
-.container:not(:hover) .sparkles span{
-    animation: none;
-    transform: translateY(10px) scale(.35);
-}
-
 .card{
     position: relative;
     width: 250px;
@@ -188,19 +143,6 @@ body{
     }
 }
 
-@keyframes sparkle-rise{
-    0%{
-        transform: translateY(10px) scale(.35);
-    }
-    20%{
-        opacity: .9;
-    }
-    100%{
-        transform: translateY(-110vh) scale(1.15);
-        opacity: 0;
-    }
-}
-
 .promise::before{
     content: '';
     position: absolute;
@@ -221,4 +163,5 @@ body{
         transform: scaleX(.85);
     }
 }
+
 
