@@ -1,0 +1,221 @@
+body{
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: rgb(255, 255, 239);
+}
+
+.bg-message{
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    font-family: 'Brush Script MT', 'Segoe Script', 'Snell Roundhand', cursive;
+    font-size: clamp(64px, 15vw, 180px);
+    color: rgba(185, 25, 55, 0.2);
+    text-align: center;
+    line-height: 0.9;
+    z-index: 0;
+}
+
+@media (max-width: 768px){
+    .bg-message{
+        font-size: clamp(52px, 20vw, 120px);
+        color: rgba(185, 25, 55, 0.32);
+        line-height: 0.95;
+    }
+}
+
+.container{
+   position: relative;
+   z-index: 2;
+}
+
+.promise{
+    position: relative;
+    top: 50px;
+    cursor: pointer;
+    animation: up 3s linear infinite;
+    overflow: visible;
+    z-index: 2;
+}
+
+.envelop{
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: rgb(255, 127, 148);
+    display: grid;
+    place-items: center;
+    z-index: 2;
+}
+
+.envelop::before{
+    content: '';
+    position: absolute;
+    width: 212px;
+    height: 212px;
+    background: rgb(255, 127, 148);
+    transform: rotate(45deg);
+    top: -105px;
+    left: 44px;
+    border-radius: 30px 0 0 0;
+}
+
+.front{
+    position: absolute;
+    border-right: 180px solid rgb(255, 175, 189);
+    border-top: 95px solid transparent;
+    border-bottom: 100px solid transparent;
+    left: 120px;
+    top: 5px;
+    width: 0;
+    height: 0;
+    z-index: 10;
+}
+
+.front::before{
+    position: absolute;
+    content: '';
+    border-left: 300px solid rgb(252, 165, 180);
+    border-top: 195px solid transparent;
+    left: -120px;
+    top: -95px;
+}
+
+
+.sparkles{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.sparkles span{
+    position: absolute;
+    bottom: -40px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 120, 120, 0.75) 45%, rgba(255, 0, 0, 0) 80%);
+    box-shadow: 0 0 16px rgba(255, 60, 60, 0.55);
+    opacity: 0;
+    transform: translateY(10px) scale(.35);
+    transition: opacity .3s ease;
+}
+
+.sparkles span:nth-child(1){ left: 4vw; animation-delay: 0s; width: 14px; height: 14px; }
+.sparkles span:nth-child(2){ left: 12vw; animation-delay: .35s; width: 20px; height: 20px; }
+.sparkles span:nth-child(3){ left: 20vw; animation-delay: .15s; width: 12px; height: 12px; }
+.sparkles span:nth-child(4){ left: 28vw; animation-delay: .5s; width: 18px; height: 18px; }
+.sparkles span:nth-child(5){ left: 36vw; animation-delay: .25s; width: 16px; height: 16px; }
+.sparkles span:nth-child(6){ left: 44vw; animation-delay: .65s; width: 22px; height: 22px; }
+.sparkles span:nth-child(7){ left: 52vw; animation-delay: .1s; width: 14px; height: 14px; }
+.sparkles span:nth-child(8){ left: 60vw; animation-delay: .45s; width: 20px; height: 20px; }
+.sparkles span:nth-child(9){ left: 68vw; animation-delay: .2s; width: 12px; height: 12px; }
+.sparkles span:nth-child(10){ left: 76vw; animation-delay: .55s; width: 18px; height: 18px; }
+.sparkles span:nth-child(11){ left: 84vw; animation-delay: .3s; width: 16px; height: 16px; }
+.sparkles span:nth-child(12){ left: 92vw; animation-delay: .7s; width: 22px; height: 22px; }
+
+.container:hover .sparkles span{
+    opacity: .8;
+    animation: sparkle-rise 3.4s ease-out infinite;
+}
+
+.container:not(:hover) .sparkles span{
+    animation: none;
+    transform: translateY(10px) scale(.35);
+}
+
+.card{
+    position: relative;
+    width: 250px;
+    height: 210px;
+    background: white;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: 1s;
+    transform: translateY(-12px);
+}
+
+.card::before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid rgb(22, 22, 22);
+    border-style: dashed;
+}
+
+.promise:hover .card{
+    transform: translateY(-132px);
+}
+
+.card .text{
+    font-family: 'Brush Script MT', cursive;
+    text-align: center;
+    color: rgb(22, 22, 22);
+}
+
+.card .title{
+    font-size: 28px;
+    line-height: 25px;
+}
+
+.card .promise-lines{
+    font-size: 17px;
+    line-height: 20px;
+    margin-top: 8px;
+}
+
+
+@keyframes up{
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes sparkle-rise{
+    0%{
+        transform: translateY(10px) scale(.35);
+    }
+    20%{
+        opacity: .9;
+    }
+    100%{
+        transform: translateY(-110vh) scale(1.15);
+        opacity: 0;
+    }
+}
+
+.promise::before{
+    content: '';
+    position: absolute;
+    width: 330px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    top: 265px;
+    left: -15px;
+    animation: scale 3s linear infinite;
+}
+
+@keyframes scale{
+    0%, 100%{
+        transform: scaleX(1);
+    }
+    50%{
+        transform: scaleX(.85);
+    }
+}
